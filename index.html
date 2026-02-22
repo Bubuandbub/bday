@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bublu ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(to top, #ffb6c1, #ffc0cb);
+    text-align:center;
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+}
+@keyframes floatUp{
+    0%{transform:translateY(100vh); opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+
+/* Center container */
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* Surprise Button */
+#surpriseBtn{
+    padding:20px 40px;
+    font-size:24px;
+    background:white;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    box-shadow:0 0 20px pink;
+    transition:0.3s;
+}
+#surpriseBtn:hover{
+    transform:scale(1.1);
+}
+
+/* Hidden Content */
+.hidden{
+    display:none;
+}
+
+/* Birthday Text */
+.birthday-text{
+    font-size:48px;
+    color:#fff;
+    text-shadow:0 0 20px #ff1493;
+    animation: glow 2s infinite alternate;
+}
+@keyframes glow{
+    from{text-shadow:0 0 10px #ff69b4;}
+    to{text-shadow:0 0 30px #ff1493;}
+}
+
+/* Bubu Dudu Animation */
+.bubu{
+    width:250px;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+/* Gift Box */
+.gift{
+    font-size:80px;
+    cursor:pointer;
+    margin-top:20px;
+    animation: shake 2s infinite;
+}
+@keyframes shake{
+    0%,100%{transform:rotate(0);}
+    25%{transform:rotate(-5deg);}
+    75%{transform:rotate(5deg);}
+}
+
+/* Flowers */
+.flower{
+    font-size:30px;
+    position:absolute;
+    animation: flowerPop 3s forwards;
+}
+@keyframes flowerPop{
+    0%{opacity:1; transform:translateY(0);}
+    100%{opacity:0; transform:translateY(-200px);}
+}
+
+.love-text{
+    font-size:40px;
+    color:white;
+    margin-top:20px;
+    text-shadow:0 0 20px red;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts script will generate hearts -->
+
+<div class="container">
+
+<button id="surpriseBtn">Click for Surprise 💖</button>
+
+<div id="content" class="hidden">
+
+    <div class="birthday-text">Happy Birthday Bublu 🎉</div>
+
+    <img src="Bubu-loving-Dudu-595xh.pngw3.webp" class="bubu">
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <div id="loveMessage"></div>
+
+</div>
+
+</div>
+
+<script>
+
+/* Floating Hearts Generator */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,300);
+
+/* Surprise Button */
+document.getElementById("surpriseBtn").onclick=function(){
+    this.style.display="none";
+    document.getElementById("content").classList.remove("hidden");
+};
+
+/* Gift Click */
+function openGift(){
+    for(let i=0;i<20;i++){
+        const flower=document.createElement("div");
+        flower.classList.add("flower");
+        flower.innerHTML="🌸";
+        flower.style.left=Math.random()*100+"vw";
+        flower.style.top="60%";
+        document.body.appendChild(flower);
+        setTimeout(()=>{flower.remove();},3000);
+    }
+    document.getElementById("loveMessage").innerHTML="<div class='love-text'>I Love You ❤️</div>";
+}
+
+</script>
+
+</body>
+</html>
